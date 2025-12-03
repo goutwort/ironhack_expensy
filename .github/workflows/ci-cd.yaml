@@ -13,12 +13,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5           # previously v2
 
-      - name: Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4      # previously v1
+      - name: Configure Azure Credentials
+        uses: azure/login@v2     # previously v1
         with:
-          az-access-key-id: ${{ secrets.AZ_ACCESS_KEY_ID }}
-          az-secret-access-key: ${{ secrets.AZ_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-3
+          auth-type: IDENTITY
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          enable-AzPSSession: true
       - name: Infrastructure build
         run: terraform/terraform init
              terraform/terraform plan
