@@ -16,9 +16,6 @@ RUN npm ci --omit=dev
 # The COPY . . command in the original was placed too early.
 COPY . .
 
-# Miguel Serrano told me to add this line
-RUN npm run build
-
 # Stage 2: Production/Runtime Stage
 # Since we already ran 'npm ci' on an Alpine image, we can keep the same base for runtime
 FROM node:20-alpine
