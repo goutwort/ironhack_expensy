@@ -1,0 +1,24 @@
+---
+- name: Backend
+  hosts: backend
+  tasks:
+    - name: Update apt package index      # dnf for Amazon Linux AMIs
+      ansible.builtin.apt:                # dnf for Amazon Linux AMIs
+        update_cache: yes
+    - name: Install Docker if not present
+      ansible.builtin.package:
+        name: docker.io
+        state: present
+    - name: Pull Docker Image
+      docker_image:
+        name: barberry/ironhack-expensy-backend
+        source: pull
+        tag: latest
+    - name: Run Container
+      docker_container:
+        name: client
+        image: barberry/client:latest       # Change!
+        ports:
+          - "6379:6379"      # port mappings
+        state: started
+
