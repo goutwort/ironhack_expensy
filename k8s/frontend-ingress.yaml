@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: azure/application-gateway
 spec:
   rules:
-  - host: po-lin-day43-project3-record-set
+  - host: az.diogohack.shop
     http:
       paths:
       - path: /
