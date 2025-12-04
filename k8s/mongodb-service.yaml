@@ -2,28 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: po-lin-expensy-backend
+  name: mongo
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: expensy-backend
+      app: expensy-mongo
   template:
     metadata:
       labels:
-        app: expensy-backend
+        app: expensy-mongo
     spec:
       containers:
-      - name: po-lin-expensy-backend
-        image: barberry/ironhack-expensy-backend
+      - name: mongo-container
+        image: mongo
         ports:
-        - containerPort: 8706
-        env:
-        - name: DATABASE_URI
-          value: "mongodb://mongo:mongo@mongo:27017/mydb?authSource=admin"
-        - name: REDIS_HOST
-          value: "redis"
-        - name: REDIS_PORT
-          value: "6379"
-        - name: REDIS_PASSWORD
-          value: "someredispassword"
+        - containerPort: 27017
+       
