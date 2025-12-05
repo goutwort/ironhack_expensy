@@ -1,8 +1,8 @@
 ---
-apiVersion: apps/v1
+apiVersion: v1
 kind: Service
 metadata:
-  name: po-lin-mongo
+  name: mongo
 spec:
   replicas: 1
   selector:
