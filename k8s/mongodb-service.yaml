@@ -4,14 +4,9 @@ kind: Service
 metadata:
   name: mongo
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: expensy-mongo
-  template:
-    metadata:
-      labels:
-        app: expensy-mongo
     spec:
       containers:
       - name: mongo-container
